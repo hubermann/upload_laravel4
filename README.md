@@ -1,0 +1,1 @@
+function for upload images or files and create thumbnails into a laravel 4 controller.
