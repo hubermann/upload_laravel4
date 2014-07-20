@@ -19,12 +19,9 @@
 	}
 
 	public function upload_file($file, $destino, $resize=0, $thumb=0){
-		echo '<br /> Mime: '.$mime = $file->getMimeType();
-		echo '<br /> size'.$file->getSize();
-		echo '<br /> filename:'.$file->getFileName();
-		echo '<br /> filename real:'.$file->getClientOriginalName();
-		echo '<br /> path:'. $file->getRealPath();
-		echo $extencion_file= $file->guessExtension();
+		
+		$mime = $file->getMimeType();
+		
 
 		$nombre_final = str_replace(' ', '-', $file->getClientOriginalName());
 		$callback = array('error' => '', 'filename' => '', 'msg' => '' );
@@ -78,11 +75,11 @@
 		if($thumb > 0 && $callback['error'] != 1){
 			var_dump($callback);
 			if(validate_image($mime)){
-				echo 'Intento';
+				
 				//es imagen, puedo cambiar tamaño
 				if (!copy($destino.'/'.$nombre_final, $destino.'/tn_'.$nombre_final)){
 					$callback['error'] = 1;
-       				echo $callback['msg'] .= "failed to copy image for thumbnail.";
+       				$callback['msg'] .= "failed to copy image for thumbnail.";
       			}
       			$nombre_thumb = 'tn_'.$nombre_final;
       			//call function thumbnail
